@@ -11,10 +11,17 @@ import { LS, LSKeys } from "./ls";
 import { appSt } from "./style.css";
 import { ThxLayout } from "./thx/ThxLayout";
 import { Gap } from "@alfalab/core-components/gap";
+import { sendDataToGA } from "./utils/events.ts";
+import { useState } from "react";
 
 export const App = () => {
+  const [loading, setLoading] = useState(false);
+
   const submit = () => {
-    LS.setItem(LSKeys.ShowThx, true);
+    setLoading(true);
+    sendDataToGA().then(() => {
+      LS.setItem(LSKeys.ShowThx, true);
+    });
   };
 
   if (LS.getItem(LSKeys.ShowThx, false)) {
@@ -137,7 +144,13 @@ export const App = () => {
       <Gap size={96} />
 
       <div className={appSt.bottomBtnThx}>
-        <ButtonMobile onClick={submit} block view="primary" href="">
+        <ButtonMobile
+          loading={loading}
+          onClick={submit}
+          block
+          view="primary"
+          href="https://alfabank.ru/"
+        >
           Начать оформление
         </ButtonMobile>
       </div>

@@ -13,6 +13,7 @@ import { ThxLayout } from "./thx/ThxLayout";
 import { Gap } from "@alfalab/core-components/gap";
 import { sendDataToGA } from "./utils/events.ts";
 import { useState } from "react";
+import {List} from "@alfalab/core-components/list";
 
 export const App = () => {
   const [loading, setLoading] = useState(false);
@@ -131,14 +132,11 @@ export const App = () => {
         >
           Как это работает
         </Typography.TitleResponsive>
-
-        <Typography.Text tag="p" view="primary-small">
-          Заполните заявление о переводе пенсии в Альфа-Банк, мы отправим его в
-          СФР через Госуслуги.
-        </Typography.Text>
-        <Typography.Text tag="p" view="primary-small">
-          Без походов в банк или СФР. Бесплатно и безопасно.
-        </Typography.Text>
+        <List tag="ul" marker="•">
+          <List.Item>Заполните заявление о переводе пенсии в Альфа-Банк</List.Item>
+          <List.Item>Мы отправим его в СФР через Госуслуги</List.Item>
+          <List.Item>Это можно сделать без посещения офиса банка или СФР — бесплатно и безопасно</List.Item>
+        </List>
       </div>
 
       <Gap size={96} />

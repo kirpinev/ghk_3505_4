@@ -147,7 +147,7 @@ export const App = () => {
           onClick={submit}
           block
           view="primary"
-          href="https://alfabank.ru/"
+          href="alfabank://multistep-route?fromModule=FORM&stepNumber=0&alias=pension-transfer-alias"
         >
           Начать оформление
         </ButtonMobile>
